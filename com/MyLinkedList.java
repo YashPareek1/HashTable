@@ -71,6 +71,25 @@ public class MyLinkedList<K> {
 
     @Override
     public String toString() {
-        return "MyLinkedListNodes{ "+head+" }";
+        return "MyLinkedListNodes{ "+head+" }" ;
+    }
+        
+        /*Use LinkedList For Removal of word*/
+        public INode<K> removeParticularNode(INode<K> deleteNode) {
+            INode tempNode = this.head;
+            INode prev = null;
+            if(tempNode != null && tempNode.getKey() == deleteNode.getKey()) {
+                tempNode.setNext(null);
+                return tempNode;
+            }
+            else {
+                while(tempNode != null && tempNode.getKey() != deleteNode.getKey()) {
+                    prev = tempNode;
+                    tempNode = tempNode.getNext();
+                }
+                prev.setNext(tempNode.getNext());
+                tempNode.setNext(null);
+                return tempNode;
+            }
     }
 }
